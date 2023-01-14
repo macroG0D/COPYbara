@@ -1,7 +1,12 @@
 // Global Variables
 const endpoint = "https://api.openai.com/v1/engines/text-davinci-002/completions";
-// const endpoint = "https://api.openai.com/v1/engines/text-davinci-003/completions";
-const apiKey = "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";
+const apiKey = prompt();
+
+const validateInput = (input) => {
+  if (!input.length) {
+    return 'test '
+  } else return input;
+};
 
 // Function to get the UX copy
 const getUxCopy = () => {
@@ -14,7 +19,11 @@ const getUxCopy = () => {
   const reference = document.getElementById("reference").value;
   const charactersLimit = document.getElementById("characters-limit").value;
 
-  const finalPrompt = `Please, provide a UX copy according to the best practices and the following details: Guidelines: ${copyGuidelines}; Product Context: ${productContext}; User Story: ${userStory}; Desirable Action: ${desirableAction}; Structure Reference:${reference};`;
+  if (!copyGuidelines || !productContext || !userStory || !desirableAction || !charactersLimit) {
+    return alert('Fill all the required fields')
+  };
+
+  const finalPrompt = `Please, provide a UX copy according to the best practices and the following specifications: 1. Use the following Copy Guidelines: ${copyGuidelines}. 2. The UI element or use case for this UX copy will be following: ${productContext}; 3. Use case will be following: ${userStory}; 4. Desirable result or action should be according to the following: ${desirableAction}. 5. Generate the response according to the following text template:${reference};`;
   const promptTokensSize = finalPrompt.split(" ").length;
   const tokensLimit = Number(charactersLimit) + promptTokensSize;
   console.log(finalPrompt);
@@ -38,8 +47,7 @@ const getUxCopy = () => {
     .then(data => {
       // Extract the generated UX copy from the API response
       const uxCopy = data.choices[0].text;
-      console.log(data)
-      
+     
       // Display the generated UX copy on the page
       let result = document.getElementById("result");
       if (result.innerHTML.length === 0) {
@@ -47,14 +55,11 @@ const getUxCopy = () => {
         result.innerHTML += `${uxCopy}`;
       } else {
         console.log(2)
-        result.innerHTML += `<br><br> ${uxCopy}`
+        result.innerHTML += `<br><br>  ${uxCopy}`
       }
-      // document.getElementById("result").innerHTML += `<br><br> ${uxCopy}`;
-      // const FinalTokensSize = uxCopy.split(" ").length;
-      // console.log(FinalTokensSize)
     })
     .catch(error => {
       console.error(error);
-      document.getElementById("result").innerHTML = "Error: " + error;
+      // document.getElementById("result").innerHTML = "Error: " + error;
     });
 };

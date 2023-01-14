@@ -8,19 +8,18 @@
     <h1>CopyGenie v0.1</h1>
     <div class="container">
       <form id="ux-form" class="form"">
-        <label>UX Copy Guidelines:</label>
-        <input type="text" id="copy-guidelines" value="We are kind, helpful, make our users feel included, welcome. Make them want to stay and join the conversation. Make them want to come back.
-        " required />
-        <label>Product Context:</label>
-        <textarea  id="product-context" cols="30" rows="4">Body of email template informing the user that his comment report was rejected by moderator after review</textarea>
-        <label>User Story:</label>
-        <input type="text" id="user-story" value="As a user who reported a comment in conversation I want to get an email with moderation decision." required />
-        <label>Desirable Action:</label>
-        <input type="text" id="desirable-action" value="User should understand that his report was reviewed by human being who is guided by community guidelines, and decided that the reported comment is fine so it will not be removed." required />
+        <label>UX Copy Guidelines *</label>
+        <textarea placeholder="Input the summary of your product UX copy guidelines" type="text" id="copy-guidelines" required />We are kind, helpful, make our users feel included, welcome. Make them want to stay and join the conversation. Make them want to come back.</textarea>
+        <label>Product Context *</label>
+        <textarea placeholder="Describe the UI where the copy should be and it's purpose" id="product-context" cols="30" rows="4"></textarea>
+        <label>User Story *</label>
+        <input placeholder="As a user who…I want to…so I could…" type="text" id="user-story" required />
+        <label>Desirable Action *</label>
+        <input placeholder="What is the most important to convey to the user?" type="text" id="desirable-action" required />
         <label>Structure Reference:</label>
-        <input type="text" id="reference" value="[Display-name], we reviewed the comment you reported and determined the comment you reported is indeed in violation of our community standards. We've removed the comment and apologize for the inconvenience. We will use your feedback to improve our process." required />
-        <label>Characters limit:</label>
-        <input type="number" id="characters-limit" value="180" required />
+        <textarea placeholder="Input a reference" id="reference" cols="30" rows="4" required /> </textarea>
+        <label>Characters limit *</label>
+        <input placeholder="Maximal number of characters" type="number" id="characters-limit" value="180" required />
         <input class="button" type="submit" value="Submit" onclick="getUxCopy()">
       </form>
       <hr>
