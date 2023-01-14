@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1>CopyGenie v0.1</h1>
+    <div class="container">
+      <form id="ux-form" class="form"">
+        <label>UX Copy Guidelines:</label>
+        <input type="text" id="copy-guidelines" value="We are kind, helpful, make our users feel included, welcome. Make them want to stay and join the conversation. Make them want to come back.
+        " required />
+        <label>Product Context:</label>
+        <textarea  id="product-context" cols="30" rows="4">Body of email template informing the user that his comment report was rejected by moderator after review</textarea>
+        <label>User Story:</label>
+        <input type="text" id="user-story" value="As a user who reported a comment in conversation I want to get an email with moderation decision." required />
+        <label>Desirable Action:</label>
+        <input type="text" id="desirable-action" value="User should understand that his report was reviewed by human being who is guided by community guidelines, and decided that the reported comment is fine so it will not be removed." required />
+        <label>Structure Reference:</label>
+        <input type="text" id="reference" value="[Display-name], we reviewed the comment you reported and determined the comment you reported is indeed in violation of our community standards. We've removed the comment and apologize for the inconvenience. We will use your feedback to improve our process." required />
+        <label>Characters limit:</label>
+        <input type="number" id="characters-limit" value="180" required />
+        <input class="button" type="submit" value="Submit" onclick="getUxCopy()">
+      </form>
+      <hr>
+      <div class="result-wrapper">
+        <h2>Result</h2>
+        <div id="result"></div>  
+      </div>
+    </div>
+  </body>
+</html>
