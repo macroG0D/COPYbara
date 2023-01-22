@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   </head>
   <body>
-    <h1>CopyGenie v0.1</h1>
-    <div class="container">
-      <form id="ux-form" class="form"">
-        <label>UX Copy Guidelines *</label>
-        <textarea placeholder="Input the summary of your product UX copy guidelines" type="text" id="copy-guidelines" required />We are kind, helpful, make our users feel included, welcome. Make them want to stay and join the conversation. Make them want to come back.</textarea>
-        <label>Product Context *</label>
-        <textarea placeholder="Describe the UI where the copy should be and it's purpose" id="product-context" cols="30" rows="4"></textarea>
-        <label>User Story *</label>
-        <input placeholder="As a user who…I want to…so I could…" type="text" id="user-story" required />
-        <label>Desirable Action *</label>
-        <input placeholder="What is the most important to convey to the user?" type="text" id="desirable-action" required />
-        <label>Structure Reference:</label>
-        <textarea placeholder="Input a reference" id="reference" cols="30" rows="4" required /> </textarea>
-        <label>Characters limit *</label>
-        <input placeholder="Maximal number of characters" type="number" id="characters-limit" value="180" required />
-        <input class="button" type="submit" value="Submit" onclick="getUxCopy()">
-      </form>
-      <hr>
-      <div class="result-wrapper">
-        <h2>Result</h2>
-        <div id="result"></div>  
+
+<!DOCTYPE html>
+<html>
+<head>
+  <div class="logo-container"> <img class="logo" src="assets/logo.svg" alt="COPYbara logo"></div>
+  <title>COPYbara by Tony Yemelyanov</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header><h1>CopyBara</h1>
+    <button id="update-api-key" class="secondary">Set API<i class="fas fa-sync"></i></button></header> 
+  <div class="form"> 
+    <form id="microcopy-form">
+      <label for="tone-of-voice">Summarize your Tone of Voice <div class="astrix">*</div></label>
+      <textarea rows="3" type="text" id="tone-of-voice" name="tone-of-voice" placeholder="Add your Tone of Voice" required> "We are kind, helpful, make our users feel included, welcome. Make them want to stay and join the conversation. Make them want to come back."</textarea>
+      <label for="context">When will the user see the microcopy? <div class="astrix">*</div></label>
+      <input type="text" id="context" name="context" placeholder="e.g. User tries to mute another user" required>
+     
+      <label for="general-component">In what context will the user receive the microcopy? <div class="astrix">*</div> </label>
+      <input type="text" id="general-component" name="general-component" placeholder="A point in the user flow. E.g. Profile Page, Email, Confirmation dialog, etc." required>
+    
+      <label for="purpose">What is the purpose of the microcopy? <div class="astrix">*</div> </label>
+      <input type="text" id="purpose" name="purpose" placeholder="E.g. To explain to the user what happens after a mute and how to revert">
+      <div class="divider"></div>
+      <div class="ui-element-container">
+        <h3>UI Element 1</h3>
+        <label for="type-of-ui">Type of UI element for the microcopy<div class="astrix">*</div></label>
+        <input type="text" id="type-of-ui" name="type-of-ui-1" placeholder="E.g. Heading, Body text, Button, etc" required>
+       
+        <label for="default-microcopy">Provide your version of the microcopy <div class="astrix">*</div></label>
+        <input type="text" id="default-microcopy" name="default-microcopy-1" placeholder="Put in your base microcopy for the element" required>
+       
+        <label for="desirable-structure">Provide desirable microcopy structure <div class="optional">(optional)</div></label>
+        <input type="text" id="desirable-structure" name="desirable-structure-1" placeholder="Might be like:'Hello, [Username]! Text.'">
+        
+        <label for="max-characters">Max Characters <div class="astrix">*</div></label>
+        <input type="number" id="max-characters" value="180" name="max-characters-1" required>
       </div>
+
+      <div class="divider"></div>
+      <div class="buttons"> 
+        <button class="secondary" type="button" onclick="addUI()">Add UI Element <i class="fas fa-plus"></i></button>
+        <button class="primary" type="submit" onclick="storeInput()">Generate Copy</button>
+      </div>
+    
+    </form>  
+  </div>
+  <div id="results-container" style="display: none">
+    <h2>Your microcopy</h2>
+    <div id="microcopy-results">
+      <div class="results" id="results"></div>
+      <div class='spinner' id="loading-spinner" style="display: none"><img src="assets/loading-spinner.gif" alt="Loading..."></div>
     </div>
-  </body>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
