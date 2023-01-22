@@ -3,14 +3,19 @@ const resultsDiv = document.getElementById("microcopy-results");
 
 let apiKey;
 
-// Check if the API key is stored in local storage
-if (localStorage.getItem("apiKey")) {
-  apiKey = localStorage.getItem("apiKey");
-} else {
-  // Ask the user for their API key
-  apiKey = prompt("Please enter your API key:");
-  // Store the API key in local storage
-  localStorage.setItem("apiKey", apiKey);
+// Load the UI and Check if the API key is stored in local storage
+window.onload = function() {
+    if (localStorage.getItem("apiKey")) {
+        apiKey = localStorage.getItem("apiKey");
+        } else {
+            // Ask the user for their API key
+            tempPrompt = prompt("Please enter your API key:");
+            if (tempPrompt) {           
+                apiKey = tempPrompt
+                // Store the API key in local storage
+                localStorage.setItem("apiKey", apiKey);
+            }        
+        }
 }
 
 function updateAPIKey() {
