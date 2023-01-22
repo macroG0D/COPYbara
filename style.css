@@ -14,7 +14,6 @@ h3  {
     margin-top: 36px;
 }
 
-
 header {
     display: flex;
     justify-content: center;
@@ -109,6 +108,10 @@ button {
     letter-spacing: 0.8px;
     font-weight: 600;
     padding: 16px 36px;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 .secondary {
