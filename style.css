@@ -106,6 +106,7 @@ textarea {
 button {
     margin-left: 20px;
     border-radius: 16px;
+    letter-spacing: 0.8px;
     font-weight: 600;
     padding: 16px 36px;
 }
